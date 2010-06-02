@@ -1,6 +1,8 @@
 package net.assemble.yclock;
 
 import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -19,8 +21,10 @@ public class YclockAboutActivity extends Activity
 
         setContentView(R.layout.about_activity);
 
-        setTitle(getResources().getString(R.string.app_name) + " "
-        		+ getResources().getString(R.string.app_version));
+        try {
+            PackageInfo pi = getPackageManager().getPackageInfo("net.assemble.yclock", 0);
+            setTitle(getResources().getString(R.string.app_name) + " ver." + pi.versionName);
+        } catch (NameNotFoundException e) {}
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
                 R.drawable.icon);
     }
