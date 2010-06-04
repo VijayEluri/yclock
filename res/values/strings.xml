@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Yuzuko Tokei</string>
-	<string name="app_description" />
-	<string name="testplay">Voice test</string>
-	<string name="preferences">Preferences</string>
-	<string name="about">About Yuzuko Tokei</string>
-	<string name="button_min_ems">8</string>
-	<string name="pref_title">Configuration</string>
-	<string name="pref_enable_title">Speech</string>
-	<string name="pref_enable_summary">Enable speaking clock.</string>
-	<string name="pref_vibrate_title">Vibrate</string>
-	<string name="pref_vibrate_summary">Notify with vibration.</string>
-	<string name="pref_period_title">Speech period</string>
-	<string name="pref_period_summary">Speech interval</string>
-	<string name="pref_hours_title">Hours</string>
-	<string name="pref_hours_summary">Specify speech time.</string>
-	<string name="pref_hours_suffix">&#x00a0;o&#8216;clock</string>
-	<string name="pref_volume_title">Volume</string>
-	<string name="pref_volume_summary">Specify speech volume</string>
+    <string name="app_name">Yuzuko Tokei</string>
+    <string name="app_description" />
+    <string name="testplay">Voice test</string>
+    <string name="preferences">Preferences</string>
+    <string name="about">About Yuzuko Tokei</string>
+    <string name="button_min_ems">8</string>
+    <string name="pref_title">Configuration</string>
+    <string name="pref_enable_title">Speech</string>
+    <string name="pref_enable_summary">Enable speaking clock.</string>
+    <string name="pref_vibrate_title">Vibrate</string>
+    <string name="pref_vibrate_summary">Notify with vibration.</string>
+    <string name="pref_period_title">Speech period</string>
+    <string name="pref_period_summary">Speech interval</string>
+    <string name="pref_hours_title">Hours</string>
+    <string name="pref_hours_summary">Specify speech time.</string>
+    <string name="pref_hours_suffix">&#x00a0;o&#8216;clock</string>
+    <string name="pref_volume_title">Volume</string>
+    <string name="pref_volume_summary">Specify speech volume</string>
     <string name="pref_volume_useringvolume">Use ring volume</string>
-	<string name="pref_notificationicon_title">Show Notification Icon</string>
-	<string name="pref_notificationicon_summary">Show icon on notification bar.</string>
-	<string name="period_eachhour">every hour</string>
-	<string name="period_each30min">every 30 min.</string>
-	<string name="about_title">Yuzuko Tokei</string>
-	<string name="about_text">Yuzuko speaking clock!\n\nCopyright 2001-2010 Orange leaf &amp; Yukimachizuki\nProgrammed by Y.Hirose\nVoice Act by Yukiusagi
+    <string name="pref_notificationicon_title">Show Notification Icon</string>
+    <string name="pref_notificationicon_summary">Show icon on notification bar.</string>
+    <string name="period_eachhour">every hour</string>
+    <string name="period_each30min">every 30 min.</string>
+    <string name="about_title">Yuzuko Tokei</string>
+    <string name="about_text">Yuzuko speaking clock!\n\nCopyright 2001-2010 Orange leaf &amp; Yukimachizuki\nProgrammed by Y.Hirose\nVoice Act by Yukiusagi
 \n</string>
 </resources>
