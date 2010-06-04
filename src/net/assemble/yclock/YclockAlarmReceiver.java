@@ -30,13 +30,13 @@ public class YclockAlarmReceiver extends BroadcastReceiver
                 // Restore alarm
                 Log.i(this.getClass().getName(), "Yclock restarted.");
                 //new YclockVoice(ctx).setAlarm();
-            	YclockService.startService(ctx);
+                YclockService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)
                     || intent.getAction()
                             .equals(Intent.ACTION_TIMEZONE_CHANGED)) {
                 // Restart alarm
                 //new YclockVoice(ctx).setAlarm();
-            	YclockService.startService(ctx);
+                YclockService.startService(ctx);
             }
             return;
         }
@@ -44,8 +44,8 @@ public class YclockAlarmReceiver extends BroadcastReceiver
         if (Calendar.getInstance().get(Calendar.MINUTE) % 30 == 0) {
             TelephonyManager tel = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
             if (tel.getCallState() == TelephonyManager.CALL_STATE_OFFHOOK) {
-            	// 通話中は抑止
-            	return;
+                // 通話中は抑止
+                return;
             }
             new YclockVoice(ctx).play();
         }

@@ -12,7 +12,7 @@ import android.util.Log;
  */
 public class YclockService extends Service {
     private static ComponentName mService;
-	private YclockVoice mVoice;
+    private YclockVoice mVoice;
 
     @Override
     public void onCreate() {
@@ -35,16 +35,16 @@ public class YclockService extends Service {
         return null;
     }
 
-    
+
     /**
      * サービス開始
      */
     public static void startService(Context ctx) {
         mService = ctx.startService(new Intent(ctx, YclockService.class));
         if (mService == null) {
-	        Log.e(ctx.getClass().getName(), "YclockService could not start!");
-	    } else {
-	        Log.d(ctx.getClass().getName(), "YclockService started: " + mService);
+            Log.e(ctx.getClass().getName(), "YclockService could not start!");
+        } else {
+            Log.d(ctx.getClass().getName(), "YclockService started: " + mService);
         }
     }
 
@@ -53,15 +53,15 @@ public class YclockService extends Service {
      */
     public static void stopService(Context ctx) {
         if (mService != null) {
-	        Intent i = new Intent();
-	        i.setComponent(mService);
-	        boolean res = ctx.stopService(i);
-	        if (res == false) {
-		        Log.e(ctx.getClass().getName(), "YclockService could not stop!");
-	        } else {
-		        Log.d(ctx.getClass().getName(), "YclockService stopped: " + mService);
-	        	mService = null;
-	        }
+            Intent i = new Intent();
+            i.setComponent(mService);
+            boolean res = ctx.stopService(i);
+            if (res == false) {
+                Log.e(ctx.getClass().getName(), "YclockService could not stop!");
+            } else {
+                Log.d(ctx.getClass().getName(), "YclockService stopped: " + mService);
+                mService = null;
+            }
         }
     }
 }
