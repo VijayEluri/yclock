@@ -18,7 +18,7 @@ public class YclockAlarmReceiver extends BroadcastReceiver
 {
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(this.getClass().getName(), "received intent: "
+        Log.d(getClass().getName(), "received intent: "
                 + intent.getAction());
 
         if (YclockPreferences.getEnabled(ctx) == false) {
@@ -28,7 +28,7 @@ public class YclockAlarmReceiver extends BroadcastReceiver
         if (intent.getAction() != null) {
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restore alarm
-                Log.i(this.getClass().getName(), "Yclock restarted.");
+                Log.i(getClass().getName(), "Yclock restarted.");
                 //new YclockVoice(ctx).setAlarm();
                 YclockService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)
