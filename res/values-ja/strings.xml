@@ -24,6 +24,5 @@
     <string name="period_eachhour">1時間ごと</string>
     <string name="period_each30min">30分ごと</string>
     <string name="about_title">柚子時計 [ゆずことけい]</string>
-    <string name="about_text">声で時刻をお知らせします！\n\nCopyright 2001-2010 Orange leaf &amp; 雪待月\nProgrammed by Y.Hirose\nVoice Act by ユキウサギ
-\n</string>
+    <string name="about_text"><![CDATA[声で時刻をお知らせします！\n\nCopyright 2001-2010 Orange leaf & 雪待月\nVoice Act by ユキウサギ\n]]></string>
 </resources>
