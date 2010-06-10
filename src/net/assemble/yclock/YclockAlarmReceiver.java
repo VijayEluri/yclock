@@ -16,10 +16,11 @@ import net.assemble.yclock.YclockVoice;
  */
 public class YclockAlarmReceiver extends BroadcastReceiver
 {
+    private static final String TAG = "Yclock";
+
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(getClass().getName(), "received intent: "
-                + intent.getAction());
+        Log.d(TAG, "received intent: " + intent.getAction());
 
         if (YclockPreferences.getEnabled(ctx) == false) {
             return;
@@ -28,7 +29,7 @@ public class YclockAlarmReceiver extends BroadcastReceiver
         if (intent.getAction() != null) {
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restore alarm
-                Log.i(getClass().getName(), "Yclock restarted.");
+                Log.i(TAG, "Yclock restarted.");
                 //new YclockVoice(ctx).setAlarm();
                 YclockService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)

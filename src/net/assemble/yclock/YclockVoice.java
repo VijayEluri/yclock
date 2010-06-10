@@ -20,6 +20,7 @@ import net.assemble.yclock.R;
  * 時刻読み上げ処理
  */
 public class YclockVoice {
+    private static final String TAG = "Yclock";
     private static final int NOTIFICATIONID_ICON = 1;
 
     public static MediaPlayer g_Mp; // 再生中のMediaPlayer
@@ -57,7 +58,7 @@ public class YclockVoice {
         // 生成
         MediaPlayer mp = MediaPlayer.create(mCtx, resid);
         if (mp == null) {
-            Log.e(getClass().getName(), "Failed to create MediaPlayer!");
+            Log.e(TAG, "Failed to create MediaPlayer!");
             return null;
         }
 
@@ -257,7 +258,7 @@ public class YclockVoice {
         next -= (next % 1000);
         mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, next, interval,
                 pendingIntent());
-        Log.d(getClass().getName(), "set alarm: "
+        Log.d(TAG, "set alarm: "
                 + DateFormat.getDateTimeInstance().format(cal.getTime())
                 + " (msec=" + next + ", interval=" + interval + ")");
     }
@@ -298,7 +299,7 @@ public class YclockVoice {
      */
     public void resetAlarm() {
         mAlarmManager.cancel(pendingIntent());
-        Log.d(getClass().getName(), "alarm canceled.");
+        Log.d(TAG, "alarm canceled.");
         clearNotification();
     }
 

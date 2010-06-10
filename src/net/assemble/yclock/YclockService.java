@@ -11,6 +11,8 @@ import android.util.Log;
  * サービス
  */
 public class YclockService extends Service {
+    private static final String TAG = "YclockService";
+
     private static ComponentName mService;
     private YclockVoice mVoice;
 
@@ -42,9 +44,9 @@ public class YclockService extends Service {
     public static void startService(Context ctx) {
         mService = ctx.startService(new Intent(ctx, YclockService.class));
         if (mService == null) {
-            Log.e(ctx.getClass().getName(), "YclockService could not start!");
+            Log.e(TAG, "YclockService could not start!");
         } else {
-            Log.d(ctx.getClass().getName(), "YclockService started: " + mService);
+            Log.d(TAG, "YclockService started: " + mService);
         }
     }
 
@@ -57,9 +59,9 @@ public class YclockService extends Service {
             i.setComponent(mService);
             boolean res = ctx.stopService(i);
             if (res == false) {
-                Log.e(ctx.getClass().getName(), "YclockService could not stop!");
+                Log.e(TAG, "YclockService could not stop!");
             } else {
-                Log.d(ctx.getClass().getName(), "YclockService stopped: " + mService);
+                Log.d(TAG, "YclockService stopped: " + mService);
                 mService = null;
             }
         }
