@@ -85,10 +85,8 @@ public class YclockActivity extends Activity implements OnClickListener
      */
     private void updateService() {
         if (YclockPreferences.getEnabled(this)) {
-            //new YclockVoice(this).setAlarm();
             YclockService.startService(this);
         } else {
-            //new YclockVoice(this).resetAlarm();
             YclockService.stopService(this);
         }
     }

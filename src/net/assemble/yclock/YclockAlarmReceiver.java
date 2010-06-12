@@ -30,13 +30,11 @@ public class YclockAlarmReceiver extends BroadcastReceiver
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restore alarm
                 Log.i(TAG, "Yclock restarted.");
-                //new YclockVoice(ctx).setAlarm();
                 YclockService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)
                     || intent.getAction()
                             .equals(Intent.ACTION_TIMEZONE_CHANGED)) {
                 // Restart alarm
-                //new YclockVoice(ctx).setAlarm();
                 YclockService.startService(ctx);
             }
             return;
