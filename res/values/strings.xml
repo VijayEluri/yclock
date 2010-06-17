@@ -26,7 +26,6 @@
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
     <string name="about_title">Yuzuko Tokei</string>
-    <string name="about_text"><![CDATA[Yuzuko speaking clock!\n\nCopyright 2001-2010 Orange leaf & Yukimachizuki\nVoice Act by Yukiusagi\n]]></string>
     <string name="report">Report</string>
     <string name="ok">OK</string>
 </resources>
