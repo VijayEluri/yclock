@@ -1,6 +1,5 @@
 package net.assemble.yclock;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -16,7 +15,6 @@ import net.assemble.yclock.R;
 public class YclockPreferencesActivity extends PreferenceActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-    private Preference mAboutPref;
     private ListPreference mPeriodPref;
 
     @Override
@@ -27,7 +25,6 @@ public class YclockPreferencesActivity extends PreferenceActivity
         addPreferencesFromResource(R.xml.preferences);
 
         mPeriodPref = (ListPreference)findPreference(YclockPreferences.PREF_KEY_PERIOD);
-        mAboutPref = (Preference)findPreference(YclockPreferences.PREF_KEY_ABOUT);
 
         updateSummary();
     }
@@ -35,23 +32,6 @@ public class YclockPreferencesActivity extends PreferenceActivity
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
-        if (preference == mPeriodPref) {
-        } else if (preference == mAboutPref) {
-            //Toast.makeText(this, "Thanks!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent().setClass(this, YclockAboutActivity.class);
-            startActivity(intent);
-
-//          AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//          alertDialogBuilder.setTitle(R.string.about_title);
-//          alertDialogBuilder.setMessage(R.string.about_text);
-//          alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//              @Override
-//              public void onClick(DialogInterface dialog, int which) {
-//              }});
-//          alertDialogBuilder.setCancelable(true);
-//          AlertDialog alertDialog = alertDialogBuilder.create();
-//          alertDialog.show();
-        }
         return true;
     }
 

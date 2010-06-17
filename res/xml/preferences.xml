@@ -2,26 +2,23 @@
     <PreferenceCategory android:title="@string/preferences">
         <CheckBoxPreference android:defaultValue="true"
             android:key="Enabled" android:title="@string/pref_enable_title"
-            android:summary="@string/pref_enable_summary"></CheckBoxPreference>
+            android:summary="@string/pref_enable_summary" />
         <ListPreference android:entryValues="@array/entryvalues_period"
             android:entries="@array/entries_period" android:defaultValue="0"
             android:key="Period" android:dependency="Enabled" android:title="@string/pref_period_title"
-            android:summary="@string/pref_period_summary"></ListPreference>
+            android:summary="@string/pref_period_summary" />
         <net.assemble.yclock.YclockHoursPreference
             android:key="Hours" android:title="@string/pref_hours_title"
             android:summary="@string/pref_hours_summary" android:persistent="false"
-            android:dependency="Enabled"></net.assemble.yclock.YclockHoursPreference>
+            android:dependency="Enabled" />
         <net.assemble.yclock.YclockVolumePreference android:summary="@string/pref_volume_summary"
             android:title="@string/pref_volume_title" android:key="Volume"
-            android:defaultValue="3" android:dependency="Enabled"></net.assemble.yclock.YclockVolumePreference>
+            android:defaultValue="3" android:dependency="Enabled" />
         <CheckBoxPreference android:key="Vibrate"
             android:summary="@string/pref_vibrate_summary" android:title="@string/pref_vibrate_title"
-            android:defaultValue="false" android:dependency="Enabled"></CheckBoxPreference>
+            android:defaultValue="false" android:dependency="Enabled" />
         <CheckBoxPreference android:summary="@string/pref_notificationicon_summary"
             android:title="@string/pref_notificationicon_title" android:key="NotificationIcon"
-            android:defaultValue="false" android:dependency="Enabled"></CheckBoxPreference>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/about">
-        <Preference android:title="@string/about" android:key="About"></Preference>
+            android:defaultValue="false" android:dependency="Enabled" />
     </PreferenceCategory>
 </PreferenceScreen>

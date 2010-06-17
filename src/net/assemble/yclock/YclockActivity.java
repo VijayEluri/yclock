@@ -71,6 +71,10 @@ public class YclockActivity extends Activity implements OnClickListener
             Intent intent = new Intent().setClass(this, YclockPreferencesActivity.class);
             startActivity(intent);
             break;
+        case R.id.menu_about:
+            intent = new Intent().setClass(this, YclockAboutActivity.class);
+            startActivity(intent);
+            break;
         }
         return true;
     };
