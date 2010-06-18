@@ -16,6 +16,7 @@ public class YclockPreferencesActivity extends PreferenceActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener
 {
     private ListPreference mPeriodPref;
+    private Preference mTestPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class YclockPreferencesActivity extends PreferenceActivity
         addPreferencesFromResource(R.xml.preferences);
 
         mPeriodPref = (ListPreference)findPreference(YclockPreferences.PREF_KEY_PERIOD);
+        mTestPref = (Preference)findPreference(YclockPreferences.PREF_KEY_TEST);
 
         updateSummary();
     }
@@ -32,6 +34,9 @@ public class YclockPreferencesActivity extends PreferenceActivity
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
+        if (preference == mTestPref) {
+            new YclockVoice(getApplicationContext()).playTest();
+        }
         return true;
     }
 

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">柚子時計</string>
     <string name="app_description">声で時刻をお知らせします！</string>
+    <string name="enable">有効化</string>
     <string name="testplay">音声テスト</string>
     <string name="preferences">設定</string>
     <string name="about">柚子時計について</string>

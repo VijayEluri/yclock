@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
 /**
@@ -37,7 +38,7 @@ public class YclockPreferences
     public static final String PREF_KEY_NOTIFICATIONICON = "NotificationIcon";
     public static final boolean PREF_NOTIFICATIONICON_DEFAULT = false;
 
-    public static final String PREF_KEY_ABOUT = "About";
+    public static final String PREF_KEY_TEST = "Test";
 
     SharedPreferences mPref;
 
@@ -45,6 +46,12 @@ public class YclockPreferences
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
                 YclockPreferences.PREF_KEY_ENABLE,
                 YclockPreferences.PREF_ENABLE_DEFAULT);
+    }
+
+    public static void setEnable(Context ctx, boolean val) {
+        Editor e = PreferenceManager.getDefaultSharedPreferences(ctx).edit();
+        e.putBoolean(YclockPreferences.PREF_KEY_ENABLE, val);
+        e.commit();
     }
 
     public static boolean getVibrate(Context ctx) {

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ToggleButton;
 
 import net.assemble.yclock.R;
 
@@ -21,12 +22,14 @@ import net.assemble.yclock.R;
  */
 public class YclockActivity extends Activity implements OnClickListener
 {
+    private ToggleButton mEnableButton;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        
         // *** convert from deprecated preference
         if (YclockPreferences.getMediaVol(this)) {
             AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -36,20 +39,16 @@ public class YclockActivity extends Activity implements OnClickListener
             e.commit();
         }
 
-        // preferences button
-        Button btn = (Button) findViewById(R.id.Button_prefs);
-        btn.setOnClickListener(this);
-
-        // Test play button
-        Button btn_play = (Button) findViewById(R.id.Button_play);
-        btn_play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new YclockVoice(getApplicationContext()).playTest();
-            }
-        });
+        mEnableButton = (ToggleButton) findViewById(R.id.enable);
+        mEnableButton.setOnClickListener(this);
 
         updateService();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateView();
     }
 
     /**
@@ -80,8 +79,13 @@ public class YclockActivity extends Activity implements OnClickListener
     };
 
     public void onClick(View v) {
-        Intent intent = new Intent().setClass(this, YclockPreferencesActivity.class);
-        startActivity(intent);
+        YclockPreferences.setEnable(this, mEnableButton.isChecked());
+        updateView();
+        updateService();
+    }
+
+    private void updateView() {
+        mEnableButton.setChecked(YclockPreferences.getEnabled(this));
     }
 
     /**

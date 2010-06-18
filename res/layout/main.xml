@@ -12,17 +12,11 @@
             <ImageView android:layout_height="wrap_content"
                 android:src="@drawable/yuzuko" android:layout_width="wrap_content"
                 android:layout_gravity="center" android:layout_margin="@dimen/image_margin"></ImageView>
-            <LinearLayout android:layout_height="wrap_content"
-                android:orientation="horizontal" android:gravity="center"
-                android:layout_width="fill_parent">
-                <Button android:layout_height="wrap_content"
-                    android:id="@+id/Button_prefs" android:text="@string/preferences"
-                    android:layout_width="wrap_content" android:minEms="@string/button_min_ems"></Button>
-                <Button android:layout_height="wrap_content"
-                    android:id="@+id/Button_play" android:text="@string/testplay"
-                    android:minEms="@string/button_min_ems"
-                    android:layout_width="wrap_content"></Button>
-            </LinearLayout>
+            <ToggleButton android:text="@string/enable"
+                android:id="@+id/enable" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:minEms="8"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="6pt" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -20,5 +20,7 @@
         <CheckBoxPreference android:summary="@string/pref_notificationicon_summary"
             android:title="@string/pref_notificationicon_title" android:key="NotificationIcon"
             android:defaultValue="false" android:dependency="Enabled" />
+        <Preference android:title="@string/testplay" android:key="Test"
+            android:dependency="Enabled"></Preference>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Yuzuko Tokei</string>
     <string name="app_description" />
+    <string name="enable">Enable</string>
     <string name="testplay">Voice test</string>
     <string name="preferences">Preferences</string>
     <string name="about">About Yuzuko Tokei</string>
