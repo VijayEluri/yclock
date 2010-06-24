@@ -1,16 +1,11 @@
 package net.assemble.yclock;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import net.assemble.yclock.R;
-
-/**
- * 「柚子時計について」画面
- */
-public class YclockAboutActivity extends Activity
+public class AboutActivity extends Activity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,24 +31,11 @@ public class YclockAboutActivity extends Activity
                 R.drawable.icon);
 
         // テキスト
-        AssetManager as = getResources().getAssets();
+        AssetsReader ar = new AssetsReader(this);
         try {
-            InputStream fin;
-            try {
-                fin = as.open("about_" + Locale.getDefault().getLanguage() + ".txt");
-            } catch (IOException e) {
-                fin = as.open("about.txt");
-            }
-            BufferedReader in = new BufferedReader(new InputStreamReader(fin));
-            StringBuffer str = new StringBuffer();
-            String s;
-            while ((s = in.readLine()) != null) {
-                str.append(s + "\n");
-            }
-            in.close();
-
+            String str = ar.getText("about.txt");
             TextView text = (TextView) findViewById(R.id.text);
-            text.setText(str.toString());
+            text.setText(str);
         } catch (IOException e) {}
 
         // OK
@@ -68,10 +45,10 @@ public class YclockAboutActivity extends Activity
             public void onClick(View v) {
                 finish();
             }
-            
+
         });
 
-        // Send report 
+        // Send report
         Button btn_report = (Button) findViewById(R.id.report);
         btn_report.setOnClickListener(new View.OnClickListener() {
             @Override
