@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">柚子時計</string>
     <string name="app_description">声で時刻をお知らせします！</string>
+    <string name="service_started">柚子時計を開始しました。</string>
+    <string name="service_stopped">柚子時計を停止しました。</string>
     <string name="enable">有効化</string>
     <string name="testplay">音声テスト</string>
     <string name="preferences">設定</string>
@@ -9,8 +11,6 @@
     <string name="feedback">報告</string>
     <string name="button_min_ems">8</string>
     <string name="pref_title">設定</string>
-    <string name="service_started">柚子時計を開始しました。</string>
-    <string name="service_stopped">柚子時計を停止しました。</string>
     <string name="pref_enable_title">しゃべる</string>
     <string name="pref_enable_summary">時刻を読み上げます。</string>
     <string name="pref_vibrate_title">ぶるぶる</string>

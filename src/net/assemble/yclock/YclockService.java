@@ -55,7 +55,7 @@ public class YclockService extends Service {
      */
     public static boolean startService(Context ctx) {
         boolean result;
-        boolean restart = YclockService.isActive();
+        boolean restart = isActive();
         mService = ctx.startService(new Intent(ctx, YclockService.class));
         if (mService == null) {
             Log.e(TAG, "YclockService could not start!");
