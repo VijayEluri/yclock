@@ -10,6 +10,7 @@
     <string name="about">柚子時計について</string>
     <string name="feedback">報告</string>
     <string name="button_min_ems">8</string>
+    <string name="media_volume_zero">メディア再生音量が無音に設定されているため、読み上げできません。</string>
     <string name="pref_title">設定</string>
     <string name="pref_enable_title">しゃべる</string>
     <string name="pref_enable_summary">時刻を読み上げます。</string>
