@@ -21,6 +21,7 @@ public class YclockService extends Service {
     public void onCreate() {
         super.onCreate();
         mVoice = new YclockVoice(this);
+        mVoice.setAlarm();
     }
 
     @Override
