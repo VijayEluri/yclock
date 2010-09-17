@@ -44,7 +44,7 @@ public class YclockHoursPreference extends ListPreference
             mHours.set(mNewHours);
             mPref = getSharedPreferences();
             Editor e = mPref.edit();
-            e.putInt(YclockPreferences.PREF_KEY_HOURS, mHours.getCoded());
+            e.putInt(YclockPreferences.PREF_HOURS_KEY, mHours.getCoded());
             e.commit();
         }
     }
@@ -52,7 +52,7 @@ public class YclockHoursPreference extends ListPreference
     @Override
     protected void onPrepareDialogBuilder(Builder builder) {
         mPref = getSharedPreferences();
-        int hours = mPref.getInt(YclockPreferences.PREF_KEY_HOURS, YclockPreferences.PREF_HOURS_DEFAULT);
+        int hours = mPref.getInt(YclockPreferences.PREF_HOURS_KEY, YclockPreferences.PREF_HOURS_DEFAULT);
         Hours eh = new Hours(hours);
         setHours(eh);
 

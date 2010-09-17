@@ -34,8 +34,8 @@ public class YclockActivity extends Activity implements OnClickListener
         if (YclockPreferences.getMediaVol(this)) {
             AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
-            e.putBoolean(YclockPreferences.PREF_KEY_USERINGVOLUME, false);
-            e.putInt(YclockPreferences.PREF_KEY_VOLUME, audio.getStreamVolume(AudioManager.STREAM_MUSIC));
+            e.putBoolean(YclockPreferences.PREF_USERINGVOLUME_KEY, false);
+            e.putInt(YclockPreferences.PREF_VOLUME_KEY, audio.getStreamVolume(AudioManager.STREAM_MUSIC));
             e.commit();
         }
 

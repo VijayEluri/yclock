@@ -12,63 +12,64 @@ import android.preference.PreferenceManager;
  */
 public class YclockPreferences
 {
-    public static final String PREF_KEY_ENABLE = "Enabled";
-    public static final String PREF_KEY_PERIOD = "Period";
+    public static final String PREF_ENABLE_KEY = "Enabled";
     public static final boolean PREF_ENABLE_DEFAULT = true;
 
-    public static final String PREF_KEY_VIBRATE = "Vibrate";
+    public static final String PREF_PERIOD_KEY = "Period";
+
+    public static final String PREF_VIBRATE_KEY = "Vibrate";
     public static final boolean PREF_VIBRATE_DEFAULT = true;
 
     public static final String PREF_PERIOD_DEFAULT = "0";
     public static final String PREF_PERIOD_EACHHOUR = "0";
     public static final String PREF_PERIOD_EACH30MIN = "1";
 
-    public static final String PREF_KEY_HOURS = "Hours";
+    public static final String PREF_HOURS_KEY = "Hours";
     public static final int PREF_HOURS_DEFAULT = 0x00ffffff;
 
-    public static final String PREF_KEY_USERINGVOLUME = "UseRingVolume";
+    public static final String PREF_USERINGVOLUME_KEY = "UseRingVolume";
     public static final boolean PREF_USERINGVOLUME_DEFAULT = false;
 
-    public static final String PREF_KEY_VOLUME = "Volume";
+    public static final String PREF_VOLUME_KEY = "Volume";
     public static final int PREF_VOLUME_DEFAULT = 3;
 
-    public static final String PREF_KEY_MEDIAVOL = "MediaVol";
+    public static final String PREF_MEDIAVOL_KEY = "MediaVol";
     public static final boolean PREF_MEDIAVOL_DEFAULT = false;
 
-    public static final String PREF_KEY_NOTIFICATIONICON = "NotificationIcon";
+    public static final String PREF_NOTIFICATIONICON_KEY = "NotificationIcon";
     public static final boolean PREF_NOTIFICATIONICON_DEFAULT = false;
 
-    public static final String PREF_KEY_TEST = "Test";
+    public static final String PREF_TEST_KEY = "Test";
 
     SharedPreferences mPref;
 
     public static boolean getEnabled(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                YclockPreferences.PREF_KEY_ENABLE,
+                YclockPreferences.PREF_ENABLE_KEY,
                 YclockPreferences.PREF_ENABLE_DEFAULT);
     }
 
     public static void setEnable(Context ctx, boolean val) {
         Editor e = PreferenceManager.getDefaultSharedPreferences(ctx).edit();
-        e.putBoolean(YclockPreferences.PREF_KEY_ENABLE, val);
+        e.putBoolean(YclockPreferences.PREF_ENABLE_KEY, val);
         e.commit();
     }
 
     public static boolean getVibrate(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                YclockPreferences.PREF_KEY_VIBRATE,
+                YclockPreferences.PREF_VIBRATE_KEY,
                 YclockPreferences.PREF_VIBRATE_DEFAULT);
     }
 
     public static String getPeriod(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getString(
-                YclockPreferences.PREF_KEY_PERIOD,
+                YclockPreferences.PREF_PERIOD_KEY,
                 YclockPreferences.PREF_PERIOD_DEFAULT);
     }
 
     public static int getHours(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getInt(
-                YclockPreferences.PREF_KEY_HOURS,
+                YclockPreferences.PREF_HOURS_KEY,
                 YclockPreferences.PREF_HOURS_DEFAULT);
     }
 
@@ -79,25 +80,25 @@ public class YclockPreferences
 
     public static boolean getUseRingVolume(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                YclockPreferences.PREF_KEY_USERINGVOLUME,
+                YclockPreferences.PREF_USERINGVOLUME_KEY,
                 YclockPreferences.PREF_USERINGVOLUME_DEFAULT);
     }
 
     public static int getVolume(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getInt(
-                YclockPreferences.PREF_KEY_VOLUME,
+                YclockPreferences.PREF_VOLUME_KEY,
                 YclockPreferences.PREF_VOLUME_DEFAULT);
     }
 
     public static boolean getMediaVol(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                YclockPreferences.PREF_KEY_MEDIAVOL,
+                YclockPreferences.PREF_MEDIAVOL_KEY,
                 YclockPreferences.PREF_MEDIAVOL_DEFAULT);
     }
 
     public static boolean getNotificationIcon(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                YclockPreferences.PREF_KEY_NOTIFICATIONICON,
+                YclockPreferences.PREF_NOTIFICATIONICON_KEY,
                 YclockPreferences.PREF_NOTIFICATIONICON_DEFAULT);
     }
 

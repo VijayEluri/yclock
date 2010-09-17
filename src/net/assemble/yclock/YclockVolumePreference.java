@@ -75,10 +75,10 @@ public class YclockVolumePreference extends DialogPreference {
             //Log.d("debug", "new volume = " + mVolume);
 
             Editor e = getSharedPreferences().edit();
-            e.putBoolean(YclockPreferences.PREF_KEY_USERINGVOLUME, mUseRingVolume);
-            e.putInt(YclockPreferences.PREF_KEY_VOLUME, mVolume);
+            e.putBoolean(YclockPreferences.PREF_USERINGVOLUME_KEY, mUseRingVolume);
+            e.putInt(YclockPreferences.PREF_VOLUME_KEY, mVolume);
             // remove deprecated preference
-            e.remove(YclockPreferences.PREF_KEY_MEDIAVOL);
+            e.remove(YclockPreferences.PREF_MEDIAVOL_KEY);
             e.commit();
         }
     }
