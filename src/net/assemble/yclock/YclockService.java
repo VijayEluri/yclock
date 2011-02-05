@@ -12,8 +12,6 @@ import android.widget.Toast;
  * サービス
  */
 public class YclockService extends Service {
-    private static final String TAG = "YclockService";
-
     private static ComponentName mService;
     private YclockVoice mVoice;
 
@@ -59,10 +57,10 @@ public class YclockService extends Service {
         boolean restart = isActive();
         mService = ctx.startService(new Intent(ctx, YclockService.class));
         if (mService == null) {
-            Log.e(TAG, "YclockService could not start!");
+            Log.e(Yclock.TAG, "YclockService could not start!");
             result = false;
         } else {
-            Log.d(TAG, "YclockService started: " + mService);
+            Log.d(Yclock.TAG, "YclockService started: " + mService);
             result = true;
         }
         if (!restart && result) {
@@ -80,9 +78,9 @@ public class YclockService extends Service {
             i.setComponent(mService);
             boolean res = ctx.stopService(i);
             if (res == false) {
-                Log.e(TAG, "YclockService could not stop!");
+                Log.e(Yclock.TAG, "YclockService could not stop!");
             } else {
-                Log.d(TAG, "YclockService stopped: " + mService);
+                Log.d(Yclock.TAG, "YclockService stopped: " + mService);
                 Toast.makeText(ctx, R.string.service_stopped, Toast.LENGTH_SHORT).show();
                 mService = null;
             }

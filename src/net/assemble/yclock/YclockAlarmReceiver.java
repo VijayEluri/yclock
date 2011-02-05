@@ -14,11 +14,9 @@ import net.assemble.yclock.YclockVoice;
  */
 public class YclockAlarmReceiver extends BroadcastReceiver
 {
-    private static final String TAG = "Yclock";
-
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(TAG, "received intent: " + intent.getAction());
+        Log.d(Yclock.TAG, "received intent: " + intent.getAction());
 
         if (Calendar.getInstance().get(Calendar.MINUTE) % 30 == 0) {
             TelephonyManager tel = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
