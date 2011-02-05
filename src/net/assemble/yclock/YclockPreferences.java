@@ -18,7 +18,7 @@ public class YclockPreferences
     public static final String PREF_PERIOD_KEY = "Period";
 
     public static final String PREF_VIBRATE_KEY = "Vibrate";
-    public static final boolean PREF_VIBRATE_DEFAULT = true;
+    public static final boolean PREF_VIBRATE_DEFAULT = false;
 
     public static final String PREF_PERIOD_DEFAULT = "0";
     public static final String PREF_PERIOD_EACHHOUR = "0";
