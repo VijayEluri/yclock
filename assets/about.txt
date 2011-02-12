@@ -1,4 +1,4 @@
 Yuzuko speaking clock!
 
-Copyright 2001-2010 Orange leaf & Yukimachizuki
+Copyright 2001-2011 Orange leaf & Yukimachizuki
 Voice Act by Yukiusagi
