@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_height="wrap_content"
-    android:layout_width="fill_parent">
-    <ScrollView android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical"
-            android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:layout_height="wrap_content"
-                android:text="@string/app_description"
-                android:layout_width="fill_parent" android:gravity="center"></TextView>
-            <ImageView android:layout_height="wrap_content"
-                android:src="@drawable/yuzuko" android:layout_width="wrap_content"
-                android:layout_gravity="center" android:layout_margin="@dimen/image_margin"></ImageView>
-            <ToggleButton android:text="@string/enable"
-                android:id="@+id/enable" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:minEms="8"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="6pt" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:gravity="center">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:gravity="center">
+        <TextView android:text="@string/app_description"
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:layout_margin="8dp" android:gravity="center" />
+        <ImageView android:id="@+id/main_image"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:src="@drawable/yuzuko" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:gravity="bottom">
+        <ToggleButton android:id="@+id/enable"
+            android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>
