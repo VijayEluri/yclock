@@ -31,7 +31,7 @@ public class YclockPreferences
     public static final boolean PREF_USERINGVOLUME_DEFAULT = false;
 
     public static final String PREF_VOLUME_KEY = "Volume";
-    public static final int PREF_VOLUME_DEFAULT = 3;
+    public static final int PREF_VOLUME_DEFAULT = 4;
 
     public static final String PREF_MEDIAVOL_KEY = "MediaVol";
     public static final boolean PREF_MEDIAVOL_DEFAULT = false;

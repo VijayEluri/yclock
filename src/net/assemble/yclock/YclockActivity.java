@@ -12,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import net.assemble.android.AboutActivity;
@@ -49,10 +48,10 @@ public class YclockActivity extends Activity implements OnClickListener
     protected void onResume() {
         super.onResume();
 
-        AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
-            Toast.makeText(this, R.string.media_volume_zero, Toast.LENGTH_LONG).show();
-        }
+//        AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//        if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
+//            Toast.makeText(this, R.string.media_volume_zero, Toast.LENGTH_LONG).show();
+//        }
 
         updateView();
     }

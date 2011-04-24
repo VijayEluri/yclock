@@ -5,6 +5,7 @@ import java.text.DateFormat;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Vibrator;
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -25,6 +26,7 @@ public class YclockVoice {
     public static MediaPlayer g_Mp; // 再生中のMediaPlayer
     public static boolean g_Icon;       // 通知バーアイコン状態
 
+    private AudioManager mAudioMananger;
     private AlarmManager mAlarmManager;
     private Context mCtx;
     private Calendar mCal;
@@ -36,8 +38,8 @@ public class YclockVoice {
      */
     public YclockVoice(Context context) {
         mCtx = context;
-        mAlarmManager = (AlarmManager) mCtx
-                .getSystemService(Context.ALARM_SERVICE);
+        mAudioMananger = (AudioManager) mCtx.getSystemService(Context.AUDIO_SERVICE);
+        mAlarmManager = (AlarmManager) mCtx.getSystemService(Context.ALARM_SERVICE);
     }
 
     /**
@@ -55,23 +57,15 @@ public class YclockVoice {
         }
 
         // 生成
-        MediaPlayer mp = MediaPlayer.create(mCtx, resid);
-        if (mp == null) {
+        MediaPlayer mp = new MediaPlayer();
+        try {
+            mp.setDataSource(mCtx, Uri.parse("android.resource://" + mCtx.getPackageName() + "/" + resid));
+            mp.setAudioStreamType(AudioManager.STREAM_ALARM);
+            mp.prepare();
+        } catch (Exception e) {
             Log.e(Yclock.TAG, "Failed to create MediaPlayer!");
             return null;
         }
-
-        // 音量設定
-        AudioManager audio = (AudioManager) mCtx.getSystemService(Context.AUDIO_SERVICE);
-        int vol;
-        if (YclockPreferences.getUseRingVolume(mCtx) != false) {
-            // 着信音量を使用
-            vol = audio.getStreamVolume(AudioManager.STREAM_RING);
-        } else {
-            // 設定値を使用
-            vol = YclockPreferences.getVolume(mCtx);
-        }
-        mp.setVolume(vol, vol);
         g_Mp = mp;
         return mp;
     }
@@ -108,9 +102,11 @@ public class YclockVoice {
         if (mp == null) {
             return;
         }
+        final int origVol = mAudioMananger.getStreamVolume(AudioManager.STREAM_ALARM);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+                mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
                 mp.release();
                 g_Mp = null;
 
@@ -121,13 +117,16 @@ public class YclockVoice {
                 mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
+                        mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
                         mp.release();
                         g_Mp = null;
                     }
                 });
+                mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
                 mp2.start();
             }
         });
+        mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
         mp.start();
     }
 
