@@ -1,12 +1,8 @@
 package net.assemble.yclock;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences.Editor;
-import android.media.AudioManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,17 +22,9 @@ public class YclockActivity extends Activity implements OnClickListener
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        YclockPreferences.upgrade(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        // *** convert from deprecated preference
-        if (YclockPreferences.getMediaVol(this)) {
-            AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
-            e.putBoolean(YclockPreferences.PREF_USERINGVOLUME_KEY, false);
-            e.putInt(YclockPreferences.PREF_VOLUME_KEY, audio.getStreamVolume(AudioManager.STREAM_MUSIC));
-            e.commit();
-        }
 
         mEnableButton = (ToggleButton) findViewById(R.id.enable);
         mEnableButton.setOnClickListener(this);

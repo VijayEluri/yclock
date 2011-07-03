@@ -26,7 +26,7 @@ public class YclockVoice {
     public static MediaPlayer g_Mp; // 再生中のMediaPlayer
     public static boolean g_Icon;       // 通知バーアイコン状態
 
-    private AudioManager mAudioMananger;
+    private AudioManager mAudioManager;
     private AlarmManager mAlarmManager;
     private Context mCtx;
     private Calendar mCal;
@@ -38,7 +38,7 @@ public class YclockVoice {
      */
     public YclockVoice(Context context) {
         mCtx = context;
-        mAudioMananger = (AudioManager) mCtx.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) mCtx.getSystemService(Context.AUDIO_SERVICE);
         mAlarmManager = (AlarmManager) mCtx.getSystemService(Context.ALARM_SERVICE);
     }
 
@@ -98,15 +98,20 @@ public class YclockVoice {
         //  notificationManager.notify(R.string.app_name, notification);
         }
 
+        if (YclockPreferences.getSilent(mCtx) &&
+                mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
+            return;
+        }
+
         MediaPlayer mp = createMediaPlayer(getHourSound(mCal));
         if (mp == null) {
             return;
         }
-        final int origVol = mAudioMananger.getStreamVolume(AudioManager.STREAM_ALARM);
+        final int origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
                 mp.release();
                 g_Mp = null;
 
@@ -117,16 +122,16 @@ public class YclockVoice {
                 mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
-                        mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+                        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
                         mp.release();
                         g_Mp = null;
                     }
                 });
-                mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
+                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
                 mp2.start();
             }
         });
-        mAudioMananger.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
+        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
         mp.start();
     }
 

@@ -17,6 +17,7 @@ public class YclockReceiver extends BroadcastReceiver
     public void onReceive(Context ctx, Intent intent) {
         Log.d(Yclock.TAG, "received intent: " + intent.getAction());
 
+        YclockPreferences.upgrade(ctx);
         if (YclockPreferences.getEnabled(ctx) == false) {
             return;
         }
@@ -28,7 +29,7 @@ public class YclockReceiver extends BroadcastReceiver
                 YclockService.startService(ctx);
             } else if (intent.getAction().equals("android.intent.action.PACKAGE_REPLACED"/*Intent.ACTION_PACKAGE_REPLACED*/)) {
                 if (intent.getData() != null &&
-                    intent.getData().equals(Uri.fromParts("package", ctx.getPackageName(), null))) {
+                        intent.getData().equals(Uri.fromParts("package", ctx.getPackageName(), null))) {
                     // Restart service
                     Log.i(Yclock.TAG, "Yclock restarted. (package replaced)");
                     YclockService.startService(ctx);
