@@ -108,10 +108,13 @@ public class YclockVoice {
             return;
         }
         final int origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
+        final int newVol = YclockPreferences.getVolume(mCtx);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+                if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
+                    mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+                }
                 mp.release();
                 g_Mp = null;
 
@@ -122,16 +125,18 @@ public class YclockVoice {
                 mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
-                        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+                        if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
+                            mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+                        }
                         mp.release();
                         g_Mp = null;
                     }
                 });
-                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
+                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
                 mp2.start();
             }
         });
-        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, YclockPreferences.getVolume(mCtx), 0);
+        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
         mp.start();
     }
 
