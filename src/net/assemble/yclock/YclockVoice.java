@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -22,14 +23,20 @@ import net.assemble.yclock.R;
  */
 public class YclockVoice {
     private static final int NOTIFICATIONID_ICON = 1;
+    private static final int RESTORE_VOLUME_RETRIES = 5;
+    private static final int RESTORE_VOLUME_RETRY_INTERVAL = 1000; /* ms */
 
-    public static MediaPlayer g_Mp; // 再生中のMediaPlayer
-    public static boolean g_Icon;       // 通知バーアイコン状態
+    private static MediaPlayer g_Mp; // 再生中のMediaPlayer
+    private static boolean g_Icon;       // 通知バーアイコン状態
 
     private AudioManager mAudioManager;
     private AlarmManager mAlarmManager;
     private Context mCtx;
     private Calendar mCal;
+
+    private int origVol;
+    private int newVol;
+    private int retryRestore;
 
     /**
      * Constructor
@@ -107,37 +114,59 @@ public class YclockVoice {
         if (mp == null) {
             return;
         }
-        final int origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
-        final int newVol = YclockPreferences.getVolume(mCtx);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
-                    mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
-                }
                 mp.release();
                 g_Mp = null;
 
                 MediaPlayer mp2 = createMediaPlayer(getMinSound(mCal));
                 if (mp2 == null) {
+                    restoreVolume();
                     return;
                 }
                 mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
-                        if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
-                            mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
-                        }
+                        restoreVolume();
                         mp.release();
                         g_Mp = null;
                     }
                 });
-                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
                 mp2.start();
             }
         });
+        origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
+        newVol = YclockPreferences.getVolume(mCtx);
+        retryRestore = RESTORE_VOLUME_RETRIES;
+        if (Yclock.DEBUG) Log.d(Yclock.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
         mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
         mp.start();
+    }
+
+    /**
+     * 音量を元に戻す
+     */
+    private void restoreVolume() {
+        if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
+            // 音量が自分で変更したものと同じ場合のみ復元する
+            mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+            if (Yclock.DEBUG) Log.d(Yclock.TAG, "Restored alarm volume: " + newVol + " -> " + origVol);
+        } else {
+            // 音量が他の要因により変更されていた場合、ちょっと時間を置いてリトライしてみる
+            retryRestore--;
+            if (retryRestore > 0) {
+                if (Yclock.DEBUG) Log.d(Yclock.TAG, "Pending restoring alarm volume: count=" + retryRestore);
+                //1.初回実行
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        restoreVolume();
+                    }
+                }, RESTORE_VOLUME_RETRY_INTERVAL);
+            }
+        }
     }
 
     /**
