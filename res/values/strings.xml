@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Yuzuko Tokei</string>
-    <string name="app_description" />
+    <string name="app_description">I tell you the time signal!</string>
     <string name="ok">OK</string>
     <string name="service_started">Yuzuko Tokei started.</string>
     <string name="service_stopped">Yuzuko Tokei stopped.</string>
