@@ -67,6 +67,7 @@ public class YclockActivity extends Activity implements OnClickListener
             break;
         case R.id.menu_about:
             intent = new Intent().setClass(this, AboutActivity.class);
+            intent.putExtra("body_asset", "about.txt");
             startActivity(intent);
             break;
         }
