@@ -1,4 +1,4 @@
-package net.assemble.yclock;
+package net.assemble.yclock.preferences;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 
 import net.assemble.yclock.R;
+import net.assemble.yclock.YclockService;
+import net.assemble.yclock.YclockVoice;
 
 /**
  * 設定画面

@@ -1,4 +1,4 @@
-package net.assemble.yclock;
+package net.assemble.yclock.preferences;
 
 import java.util.Calendar;
 

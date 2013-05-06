@@ -11,6 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ToggleButton;
 
 import net.assemble.android.AboutActivity;
+import net.assemble.yclock.preferences.YclockPreferences;
+import net.assemble.yclock.preferences.YclockPreferencesActivity;
 
 /**
  * メイン

@@ -1,4 +1,4 @@
-package net.assemble.yclock;
+package net.assemble.yclock.preferences;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -8,7 +8,8 @@ import android.content.SharedPreferences.Editor;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 
-import net.assemble.yclock.YclockPreferences.Hours;
+import net.assemble.yclock.R;
+import net.assemble.yclock.preferences.YclockPreferences.Hours;
 
 /**
  * 読み上げ時刻設定
