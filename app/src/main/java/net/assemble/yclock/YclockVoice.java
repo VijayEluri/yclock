@@ -16,7 +16,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import net.assemble.yclock.R;
 import net.assemble.yclock.preferences.YclockPreferences;
 
 /**
@@ -42,7 +41,7 @@ public class YclockVoice {
     /**
      * Constructor
      *
-     * @param context
+     * @param context Context
      */
     public YclockVoice(Context context) {
         mCtx = context;
@@ -54,7 +53,7 @@ public class YclockVoice {
      * MediaPlayer生成
      * 着信音量をMediaPlayerに設定する。
      *
-     * @param mp 設定するMediaPlayer
+     * @param resid リソースID
      */
     private MediaPlayer createMediaPlayer(int resid) {
         // 再生中の音声があれば停止する。
@@ -262,7 +261,7 @@ public class YclockVoice {
      * ノーティフィケーションバーにアイコンを表示
      */
     private void showNotification() {
-        if (g_Icon != false) {
+        if (g_Icon) {
             return;
         }
         NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -279,7 +278,7 @@ public class YclockVoice {
      * ノーティフィケーションバーのアイコンを消去
      */
     private void clearNotification() {
-        if (g_Icon == false) {
+        if (!g_Icon) {
             return;
         }
         NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -349,7 +348,6 @@ public class YclockVoice {
      */
     public PendingIntent pendingIntent() {
         Intent intent = new Intent(mCtx, YclockAlarmReceiver.class);
-        PendingIntent sender = PendingIntent.getBroadcast(mCtx, 0, intent, 0);
-        return sender;
+        return PendingIntent.getBroadcast(mCtx, 0, intent, 0);
     }
 }

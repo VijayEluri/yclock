@@ -42,11 +42,7 @@ public class YclockService extends Service {
      * サービス動作有無取得
      */
     public static boolean isActive() {
-        if (mService != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return mService != null;
     }
 
     /**
@@ -77,7 +73,7 @@ public class YclockService extends Service {
             Intent i = new Intent();
             i.setComponent(mService);
             boolean res = ctx.stopService(i);
-            if (res == false) {
+            if (!res) {
                 Log.e(Yclock.TAG, "YclockService could not stop!");
             } else {
                 Log.d(Yclock.TAG, "YclockService stopped: " + mService);

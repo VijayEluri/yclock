@@ -72,7 +72,7 @@ public class YclockActivity extends Activity implements OnClickListener
             break;
         }
         return true;
-    };
+    }
 
     public void onClick(View v) {
         YclockPreferences.setEnable(this, mEnableButton.isChecked());

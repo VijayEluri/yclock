@@ -21,6 +21,7 @@ public class YclockPreferences
     public static final String PREF_PERIOD_KEY = "period";
     public static final String PREF_PERIOD_DEFAULT = "0";
     public static final String PREF_PERIOD_EACHHOUR = "0";
+    @SuppressWarnings("unused")
     public static final String PREF_PERIOD_EACH30MIN = "1";
 
     public static final String PREF_VIBRATE_KEY = "vibrate";
@@ -39,8 +40,6 @@ public class YclockPreferences
     public static final boolean PREF_NOTIFICATION_ICON_DEFAULT = false;
 
     public static final String PREF_TEST_KEY = "test";
-
-    SharedPreferences mPref;
 
     public static boolean getEnabled(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(

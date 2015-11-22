@@ -8,8 +8,6 @@ import android.os.PowerManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import net.assemble.yclock.YclockVoice;
-
 /**
  * Receiver for Alarm Intent
  */

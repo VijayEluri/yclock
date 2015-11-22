@@ -73,6 +73,7 @@ public class YclockHoursPreference extends ListPreference
         mNewHours.set(eh);
     }
 
+    @SuppressWarnings("unused")
     public Hours getHours() {
         return mHours;
     }

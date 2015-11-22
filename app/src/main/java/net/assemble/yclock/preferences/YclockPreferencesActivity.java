@@ -28,7 +28,7 @@ public class YclockPreferencesActivity extends PreferenceActivity
         addPreferencesFromResource(R.xml.preferences);
 
         mPeriodPref = (ListPreference)findPreference(YclockPreferences.PREF_PERIOD_KEY);
-        mTestPref = (Preference)findPreference(YclockPreferences.PREF_TEST_KEY);
+        mTestPref = findPreference(YclockPreferences.PREF_TEST_KEY);
 
         updateSummary();
     }

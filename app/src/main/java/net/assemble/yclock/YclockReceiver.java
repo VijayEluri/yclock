@@ -20,7 +20,7 @@ public class YclockReceiver extends BroadcastReceiver
         Log.d(Yclock.TAG, "received intent: " + intent.getAction());
 
         YclockPreferences.upgrade(ctx);
-        if (YclockPreferences.getEnabled(ctx) == false) {
+        if (!YclockPreferences.getEnabled(ctx)) {
             return;
         }
 
@@ -41,7 +41,6 @@ public class YclockReceiver extends BroadcastReceiver
                 // Restart alarm
                 YclockService.startService(ctx);
             }
-            return;
         }
     }
 
