@@ -1,5 +1,6 @@
 package net.assemble.yclock;
 
+import net.assemble.taeclock.R;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;

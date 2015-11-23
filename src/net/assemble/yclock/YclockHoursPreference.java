@@ -8,6 +8,7 @@ import android.content.SharedPreferences.Editor;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 
+import net.assemble.taeclock.R;
 import net.assemble.yclock.YclockPreferences.Hours;
 
 /**

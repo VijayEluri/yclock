@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 
-import net.assemble.yclock.R;
+import net.assemble.taeclock.R;
 
 /**
  *

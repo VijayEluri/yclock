@@ -7,7 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 
-import net.assemble.yclock.R;
+import net.assemble.taeclock.R;
 
 /**
  * 設定画面

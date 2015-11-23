@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.ToggleButton;
 
 import net.assemble.android.AboutActivity;
+import net.assemble.taeclock.R;
 
 /**
  * メイン

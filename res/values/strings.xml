@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Yuzuko Tokei</string>
+    <string name="app_name">Tae Clock</string>
     <string name="app_description" />
     <string name="ok">OK</string>
-    <string name="service_started">Yuzuko Tokei started.</string>
-    <string name="service_stopped">Yuzuko Tokei stopped.</string>
+    <string name="service_started">Tae Clock started.</string>
+    <string name="service_stopped">Tae Clock stopped.</string>
     <string name="enable">Enable</string>
     <string name="testplay">Voice test</string>
     <string name="preferences">Settings</string>
@@ -25,7 +25,7 @@
     <string name="pref_volume_summary">Adjust speech volume.</string>
     <string name="pref_volume_silent">Mute on silent mode</string>
     <string name="pref_notificationicon_title">Show Notification Icon</string>
-    <string name="pref_notificationicon_summary">Show icon on notification bar.</string>
+    <string name="pref_notificationicon_summary">Show icon on status bar.</string>
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
 </resources>

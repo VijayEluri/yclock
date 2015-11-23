@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.assemble.yclock" android:versionName="1.2"
-    android:versionCode="113">
+    android:versionCode="1" package="net.assemble.taeclock" android:versionName="1.0">
     <application android:icon="@drawable/icon"
         android:label="@string/app_name">
         <activity android:label="@string/app_name"
-            android:name=".YclockActivity" android:launchMode="singleTask">
+            android:name=".TaeclockActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".YclockReceiver">
+        <receiver android:name="net.assemble.yclock.YclockReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.TIME_SET" />
@@ -22,9 +21,9 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".YclockAlarmReceiver" />
-        <activity android:name=".YclockPreferencesActivity" />
-        <service android:name=".YclockService" />
+        <receiver android:name="net.assemble.yclock.YclockAlarmReceiver" />
+        <activity android:name="net.assemble.yclock.YclockPreferencesActivity" />
+        <service android:name="net.assemble.yclock.YclockService" />
         <activity android:name="net.assemble.android.AboutActivity"
             android:theme="@android:style/Theme.Dialog" />
     </application>

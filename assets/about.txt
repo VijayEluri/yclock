@@ -1,4 +1,4 @@
-Yuzuko speaking clock!
+Taeclock speaking clock!
 
-Copyright 2001-2011 Orange leaf & Yukimachizuki
-Voice Act by Yukiusagi
+Copyright 2001-2011 Orange leaf & Taemi Inoue
+Voice Act by Taemi Inoue

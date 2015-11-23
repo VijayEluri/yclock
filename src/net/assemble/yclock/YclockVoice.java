@@ -16,7 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import net.assemble.yclock.R;
+import net.assemble.taeclock.R;
 
 /**
  * 時刻読み上げ処理
@@ -27,7 +27,7 @@ public class YclockVoice {
     private static final int RESTORE_VOLUME_RETRY_INTERVAL = 1000; /* ms */
 
     private static MediaPlayer g_Mp; // 再生中のMediaPlayer
-    private static boolean g_Icon;       // 通知バーアイコン状態
+    private static boolean g_Icon;       // ステータスバーアイコン状態
 
     private AudioManager mAudioManager;
     private AlarmManager mAlarmManager;

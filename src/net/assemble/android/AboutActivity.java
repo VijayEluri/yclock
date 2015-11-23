@@ -13,7 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import net.assemble.yclock.R;
+import net.assemble.taeclock.R;
 
 public class AboutActivity extends Activity
 {
