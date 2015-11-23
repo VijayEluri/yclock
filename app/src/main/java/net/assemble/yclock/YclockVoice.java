@@ -267,7 +267,8 @@ public class YclockVoice {
         NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.icon, mCtx.getResources().getString(R.string.app_name), System.currentTimeMillis());
         Intent intent = new Intent(mCtx, YclockActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(mCtx, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent contentIntent = PendingIntent.getActivity(mCtx, 0, intent, 0);
         notification.setLatestEventInfo(mCtx, mCtx.getResources().getString(R.string.app_name), mCtx.getResources().getString(R.string.app_description), contentIntent);
         notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
         notificationManager.notify(NOTIFICATIONID_ICON, notification);
