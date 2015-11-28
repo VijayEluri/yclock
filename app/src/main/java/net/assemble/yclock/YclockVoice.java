@@ -14,6 +14,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import net.assemble.yclock.preferences.YclockPreferences;
@@ -96,13 +97,6 @@ public class YclockVoice {
                 pattern = new long[] {500, 200, 100, 200};
             }
             vibrator.vibrate(pattern, -1);
-
-        //  // Receiverからは直接振動させられないため、Notificationを経由する
-        //  // ->そんなことはなかった
-        //  NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-        //  Notification notification = new Notification();
-        //  notification.vibrate = pattern;
-        //  notificationManager.notify(R.string.app_name, notification);
         }
 
         if (YclockPreferences.getSilent(mCtx) &&
@@ -264,14 +258,23 @@ public class YclockVoice {
         if (g_Icon) {
             return;
         }
-        NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notification = new Notification(R.drawable.icon, mCtx.getResources().getString(R.string.app_name), System.currentTimeMillis());
+
         Intent intent = new Intent(mCtx, YclockActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent contentIntent = PendingIntent.getActivity(mCtx, 0, intent, 0);
-        notification.setLatestEventInfo(mCtx, mCtx.getResources().getString(R.string.app_name), mCtx.getResources().getString(R.string.app_description), contentIntent);
-        notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+
+        Notification notification = new NotificationCompat.Builder(mCtx)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(mCtx.getResources().getString(R.string.app_name))
+                .setContentText(mCtx.getResources().getString(R.string.app_description))
+                .setContentIntent(contentIntent)
+                .setWhen(System.currentTimeMillis())
+                .setOngoing(true)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATIONID_ICON, notification);
+
         g_Icon = true;
     }
 
