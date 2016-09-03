@@ -133,7 +133,7 @@ public class YclockVoice {
         origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
         newVol = YclockPreferences.getVolume(mCtx);
         retryRestore = RESTORE_VOLUME_RETRIES;
-        if (Yclock.DEBUG) Log.d(Yclock.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
+        if (BuildConfig.DEBUG) Log.d(Yclock.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
         mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
         mp.start();
     }
@@ -145,12 +145,12 @@ public class YclockVoice {
         if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
             // 音量が自分で変更したものと同じ場合のみ復元する
             mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
-            if (Yclock.DEBUG) Log.d(Yclock.TAG, "Restored alarm volume: " + newVol + " -> " + origVol);
+            if (BuildConfig.DEBUG) Log.d(Yclock.TAG, "Restored alarm volume: " + newVol + " -> " + origVol);
         } else {
             // 音量が他の要因により変更されていた場合、ちょっと時間を置いてリトライしてみる
             retryRestore--;
             if (retryRestore > 0) {
-                if (Yclock.DEBUG) Log.d(Yclock.TAG, "Pending restoring alarm volume: count=" + retryRestore);
+                if (BuildConfig.DEBUG) Log.d(Yclock.TAG, "Pending restoring alarm volume: count=" + retryRestore);
                 //1.初回実行
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
