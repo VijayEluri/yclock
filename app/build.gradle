@@ -8,6 +8,8 @@ android {
         applicationId "net.assemble.yclock"
         minSdkVersion 4
         targetSdkVersion 19
+        versionCode 114
+        versionName "1.3"
     }
 
     buildTypes {
