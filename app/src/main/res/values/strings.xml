@@ -3,7 +3,7 @@
 
     <string name="app_name">Yuzuko Tokei</string>
     <string name="app_description">I tell you the time signal!</string>
-    <string name="ok">OK</string>
+    <string name="ok" translatable="false">OK</string>
     <string name="service_started">Yuzuko Tokei started.</string>
     <string name="service_stopped">Yuzuko Tokei stopped.</string>
     <string name="enable">Enable</string>
@@ -11,7 +11,7 @@
     <string name="preferences">Settings</string>
     <string name="about">About</string>
     <string name="support">Support</string>
-    <string name="support_url">http://orleaf.net</string>
+    <string name="support_url" translatable="false">http://orleaf.net</string>
     <string name="button_min_ems">8</string>
     <string name="media_volume_zero">Please increase Media volume to play voice.</string>
     <string name="pref_title">Settings</string>
