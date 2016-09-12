@@ -351,7 +351,8 @@ public class YclockVoice {
      * PendingIntent取得
      */
     public PendingIntent pendingIntent() {
-        Intent intent = new Intent(mCtx, YclockAlarmService.class);
+        Intent intent = new Intent(mCtx, YclockService.class);
+        intent.setAction(YclockService.ACTION_ALARM);
         return PendingIntent.getService(mCtx, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }

@@ -37,7 +37,6 @@
         <activity android:name="net.assemble.yclock.preferences.YclockPreferencesActivity" />
 
         <service android:name=".YclockService" />
-        <service android:name=".YclockAlarmService" />
 
         <activity
             android:name="net.assemble.android.AboutActivity"

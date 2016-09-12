@@ -6,13 +6,21 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.PowerManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 /**
  * サービス
  */
 public class YclockService extends Service {
+    private static final String TAG = YclockService.class.getSimpleName();
+
+    public static final String ACTION_ALARM = "net.assemble.timetone.action.ALARM";
+
     private static ComponentName mService;
     private YclockVoice mVoice;
 
@@ -41,7 +49,22 @@ public class YclockService extends Service {
         return START_STICKY;
     }
 
-    private void handleCommand(@SuppressWarnings("UnusedParameters") Intent intent) {
+    private void handleCommand(Intent intent) {
+        if (intent != null && ACTION_ALARM.equals(intent.getAction())) {
+            Log.d(TAG, "received intent: " + intent.getAction());
+
+            if (Calendar.getInstance().get(Calendar.MINUTE) % 30 == 0) {
+                TelephonyManager tel = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                if (tel.getCallState() == TelephonyManager.CALL_STATE_OFFHOOK) {
+                    // 通話中は抑止
+                    return;
+                }
+                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, Yclock.TAG);
+                wl.acquire(3000);
+                new YclockVoice(this).play();
+            }
+        }
         mVoice.setAlarm();
     }
 
